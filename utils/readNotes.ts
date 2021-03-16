@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const getNotes = (): Promise<string | null> => {
+const readNotes = (): Promise<string | null> => {
   return new Promise(async (resolve) => {
     try {
       let notes = '';
@@ -23,4 +23,4 @@ const getNotes = (): Promise<string | null> => {
   });
 };
 
-export = getNotes;
+export = readNotes;
