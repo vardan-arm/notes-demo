@@ -1,0 +1,40 @@
+[
+  {
+    "id": "random_id_1",
+    "title": "Random notes",
+    "type": "rich",
+    "body": "I need to order some shampoo and other stuff",
+    "tags": "Food|Personal",
+    "date": 1615915917129
+  },
+  {
+    "id": "random_id_2",
+    "title": "My portfolio site",
+    "type": "code",
+    "body": "<!DOCTYPE html> <html> <head> <body> <div> Test </div> </body> </head> </html>",
+    "date": 1613310016129
+  },
+  {
+    "id": "random_id_3",
+    "title": "Vegetarian pho",
+    "type": "plain",
+    "body": "Traditionally, pho is made with ingredients",
+    "tags": "Food|Personal",
+    "date": 1612310016129
+  },
+  {
+    "id": "random_id_4",
+    "title": "Breakeven calculation for necessary expenses",
+    "type": "sheet",
+    "body": "Spreadsheet body",
+    "date": 1602310016129
+  },
+  {
+    "id": "random_id_5",
+    "title": "Authenticator for work",
+    "type": "tokenVault",
+    "body": "some encrypted body",
+    "tags": "Work",
+    "date": 1592310016129
+  }
+]
