@@ -18,7 +18,7 @@
   "devDependencies": {},
   "scripts": {
     "server": "nodemon --watch './**/*.ts' --ignore './**/*.spec.ts' --exec 'ts-node' ./index.ts",
-    "client": "npm run start --prefix client",
+    "client": "npm run start --prefix client-side",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
