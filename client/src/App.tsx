@@ -1,21 +1,18 @@
 import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { API_HOST } from './configs';
+import { useDispatch } from 'react-redux';
+import { getInitialNotes } from './store/actions/getInitialNotes';
 
 function App() {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     // TODO: move this to its correct place
-    async function fetchData() {
-      const res = await fetch(`${API_HOST}/api/getInitialNotes`);
-      const data = await res.json();
-      
-      console.log({data});
-    }
+    dispatch(getInitialNotes());
 
-    fetchData();
+  }, [dispatch]);
 
-  }, []);
   return (
     <div className="App">
       <header className="App-header">
