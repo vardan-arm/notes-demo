@@ -1,18 +1,24 @@
 import { INote } from '../store/types';
-import styled from 'styled-components';
+import styled, { css, StyledFunction } from 'styled-components';
 import NoteIcon from './NoteIcon';
 import { formatDate } from '../utils/dateUtils';
 import Tags from './Tags';
 import { NoteTypes } from '../enums';
-import { ReactComponent as LockIconStyled} from '../icons/lock.svg';
+import { ReactComponent as LockIconStyled } from '../icons/lock.svg';
+import { useDispatch } from 'react-redux';
+import notesSlice from '../store/notes';
 
 interface IProps {
   noteData: INote;
+  isSelected: boolean;
 }
 
 const NoteContainerStyled = styled.div`
   border-bottom: 1px solid #DFE1E4;
 
+  &:hover {
+    background: #F4F5F7;
+  }
 
   > * {
     text-overflow: ellipsis;
@@ -22,8 +28,10 @@ const NoteContainerStyled = styled.div`
     margin-right: 12px;
     margin-left: 16px;
     margin-bottom: 13px;
-    
+
   }
+
+  background: ${(p: IProps) => p.isSelected ? '#F4F5F7' : 'white'};
 `;
 
 const HeaderStyled = styled.div`
@@ -98,8 +106,9 @@ const DateStyled = styled.div`
   font-weight: 400;
 `;
 
-const Note = ({ noteData }: IProps) => {
+const Note = ({ noteData, isSelected = false }: IProps) => {
   const {
+    id,
     title,
     type,
     body,
@@ -107,8 +116,17 @@ const Note = ({ noteData }: IProps) => {
     tags,
   } = noteData;
 
+  const dispatch = useDispatch();
+
   return (
-    <NoteContainerStyled>
+    // @ts-ignore
+    <NoteContainerStyled isSelected={isSelected} onClick={(e) => {
+        // TODO (Vardan) don't do for already selected item
+        if (e.metaKey || e.ctrlKey) {
+          // dispatch(notesSlice.actions.select(id));
+          dispatch(notesSlice.actions.updateSelection(id));
+        }
+      }}>
       <HeaderStyled>
         <NoteIconStyled type={type} />
         <TitleStyled title={title}>{title}</TitleStyled>

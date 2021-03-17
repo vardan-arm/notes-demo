@@ -1,5 +1,8 @@
 import ContainerHeaderButtons from './ContainerHeaderButtons';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { StoreReducer } from '../store';
+import { getNotesSortingDirection } from '../store/selectors/notes';
 
 const ContainerStyled = styled.div`
   display: flex;
@@ -25,11 +28,14 @@ const TitleStyled = styled.div`
 `;
 
 const ContainerHeader = () => {
+  // const notesSortingDirection = useSelector((state: StoreReducer) => getNotesSortingDirection);
+
   return (
     <ContainerStyled>
       <InnerContainerStyled>
         <TitleStyled>Notes</TitleStyled>
-        <ContainerHeaderButtons />
+        {/*<ContainerHeaderButtons notesSortingDirection={true} />*/}
+        <ContainerHeaderButtons/>
       </InnerContainerStyled>
     </ContainerStyled>
   );
