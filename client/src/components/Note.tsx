@@ -95,7 +95,6 @@ const Note = ({ noteData, isSelected = false }: IProps) => {
     <NoteContainerStyled
       isSelected={isSelected}
       onClick={(e) => {
-        // TODO (Vardan) don't do for already selected item
         if (e.metaKey || e.ctrlKey) {
           dispatch(notesSlice.actions.updateSelection(id));
         }
