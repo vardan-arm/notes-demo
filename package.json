@@ -27,6 +27,7 @@
     "server": "nodemon --watch './**/*.ts' --ignore './**/*.spec.ts' --exec 'ts-node' ./index.ts",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
