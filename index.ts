@@ -10,7 +10,7 @@ const { ok, internalServerError } = HTTP_STATUSES;
 
 const app = express();
 
-app.get('/api/getInitialNotes/:noteNumber?', async (req, res) => {
+app.get('/api/getInitialNotes', async (req, res) => {
   const notes = await readNotes();
 
   // TODO: find better approach to not allow `*` for CORS
@@ -18,18 +18,33 @@ app.get('/api/getInitialNotes/:noteNumber?', async (req, res) => {
 
   if (notes !== null) {
     const notesArr = JSON.parse(notes);
-    const noteNumber = Number(req.params.noteNumber);
 
-    // If note number is provided in request, return the note at that position.
-    // Otherwise, return first `n` notes (set as constant)
-    let notesChunk = [];
-    if (!Number.isNaN(noteNumber)) {
-      notesChunk = noteNumber < notesArr.length ? notesArr.slice(noteNumber, noteNumber + 1) : notesArr.slice(notesArr.length - 1);
-    } else {
-      notesChunk = notesArr.slice(0, INITIAL_NOTES_RESPONSE_COUNT);
-    }
+    const notesChunk = notesArr.slice(0, INITIAL_NOTES_RESPONSE_COUNT);
 
     res.status(ok.code).send({ data: notesChunk });
+  } else {
+    return res
+      .status(internalServerError.code)
+      .send({ error: internalServerError.message });
+  }
+});
+
+
+app.get('/api/addNote/:noteNumber', async (req, res) => {
+  const notes = await readNotes();
+
+  if (notes !== null) {
+    const notesArr = JSON.parse(notes);
+    const noteNumber = Number(req.params.noteNumber);
+
+    const newNote = noteNumber < notesArr.length
+      ? notesArr.slice(noteNumber, noteNumber + 1)[0]
+      : {
+        ...notesArr.slice(notesArr.length - 1)[0],
+        id: `random_id_${Date.now()}` // generate a random ID to not let React complain about duplicate keys
+      };
+
+    res.status(ok.code).send({ data: newNote });
   } else {
     return res
       .status(internalServerError.code)

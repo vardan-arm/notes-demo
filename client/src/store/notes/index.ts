@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { SortingDirections } from '../../enums';
 
 const initialState = {
-  notes: [],
+  items: [],
   sortingDirection: SortingDirections.ASC
 };
 
@@ -12,14 +12,16 @@ const notesSlice = createSlice({
   reducers: {
     setNotes: (state, { payload }) => ({
       ...state,
-      notes: payload
+      items: payload
     }),
+
+    // @ts-ignore  // TODO: fix TS issue and remove `ts-ignore`
     addNote: (state, { payload }) => ({
       ...state,
-      nodes: [
-        ...state.notes,
+      items: [
+        ...state.items,
         payload
-      ]
+      ],
     })
   }
 });
