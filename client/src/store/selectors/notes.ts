@@ -1,8 +1,6 @@
 import { StoreReducer } from '../index';
-import { INote } from '../types';
 import { createSelector } from '@reduxjs/toolkit';
 
-// export const getNotes = (state: StoreReducer) => state.notes.items;
 export const getNotes = (state: StoreReducer) => state.notes;
 
 export const getNoteItems = createSelector(getNotes, notes => notes.items);

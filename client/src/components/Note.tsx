@@ -1,5 +1,5 @@
 import { INote } from '../store/types';
-import styled, { css, StyledFunction } from 'styled-components';
+import styled from 'styled-components';
 import NoteIcon from './NoteIcon';
 import { formatDate } from '../utils/dateUtils';
 import Tags from './Tags';
@@ -7,8 +7,6 @@ import { NoteTypes } from '../enums';
 import { ReactComponent as LockIconStyled } from '../icons/lock.svg';
 import { useDispatch } from 'react-redux';
 import notesSlice from '../store/notes';
-import ReactTooltip from 'react-tooltip';
-import Tooltip from './Tooltip';
 
 interface IProps {
   noteData: INote;
@@ -46,33 +44,15 @@ const HeaderStyled = styled.div`
   margin-top: 11px;
 `;
 
-const NoteIconContainerStyled = styled.div`
-  margin-right: 0;
-  margin-left: 10px;
 
-
-  //text-overflow: ellipsis;
-  //overflow-x: hidden;
-  //white-space: nowrap;
-
-  position: absolute;
-
-`;
 
 const NoteIconStyled = styled(NoteIcon)`
   margin-right: 0;
   margin-left: 10px;
 
   position: absolute;
-
-  /*svg {
-    position: absolute;
-  }*/
 `;
 
-const DetailsSectionStyled = styled.div`
-  margin-left: 16px;
-`;
 
 const TitleStyled = styled.div`
   font-size: 14px;
@@ -84,16 +64,7 @@ const TitleStyled = styled.div`
   overflow-x: hidden;
   white-space: nowrap;
 
-  /*&:before {
-    display: block;
-    //content: ' ';
-    content: url('../icons/rich-text.svg');
-    height: 16px;
-    width: 16px;
-  }*/
 `;
-
-// const IconStyled = styled.svg``;
 
 const BodyStyled = styled.div`
   font-size: 12px;

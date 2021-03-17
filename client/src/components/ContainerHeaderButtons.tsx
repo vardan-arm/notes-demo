@@ -1,10 +1,10 @@
 import { ReactComponent as SortingDirectionIcon } from '../icons/sorting-direction.svg';
 import { ReactComponent as AddNoteIcon } from '../icons/add-note.svg';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { addNewNote } from '../store/actions/addNewNote';
 import { StoreReducer } from '../store';
-import { getNoteItems, getNotes, getNotesSortingDirection } from '../store/selectors/notes';
+import { getNoteItems } from '../store/selectors/notes';
 import notesSlice from '../store/notes';
 import { SortingDirections } from '../enums';
 
@@ -18,16 +18,6 @@ const ButtonContainerStyled = styled.div`
   display: inline-block;
 `;
 
-/*const SortingDirectionsIconStyled = styled(SortingDirectionIcon)`
-  ${props => props.notesSortingDirection === SortingDirections.ASC && css`
-    transform: scaleY(-1);
-  `}
-`;*/
-
-
-// const SortingDirectionsIconStyled = styled(SortingDirectionIcon)`
-//   ${(props: IProps) => props.notessortingdirection === SortingDirections.ASC ? `transform: scaleY(-1)` : `transform: scaleY(1)`}
-// `;
 
 
 const SortingDirectionsIconContainerStyled = styled.div`
