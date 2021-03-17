@@ -7,6 +7,8 @@ import { NoteTypes } from '../enums';
 import { ReactComponent as LockIconStyled } from '../icons/lock.svg';
 import { useDispatch } from 'react-redux';
 import notesSlice from '../store/notes';
+import ReactTooltip from 'react-tooltip';
+import Tooltip from './Tooltip';
 
 interface IProps {
   noteData: INote;
@@ -119,14 +121,16 @@ const Note = ({ noteData, isSelected = false }: IProps) => {
   const dispatch = useDispatch();
 
   return (
-    // @ts-ignore
-    <NoteContainerStyled isSelected={isSelected} onClick={(e) => {
+    <NoteContainerStyled
+      isSelected={isSelected}
+      onClick={(e) => {
         // TODO (Vardan) don't do for already selected item
         if (e.metaKey || e.ctrlKey) {
-          // dispatch(notesSlice.actions.select(id));
           dispatch(notesSlice.actions.updateSelection(id));
         }
-      }}>
+      }}
+      noteData={noteData}
+    >
       <HeaderStyled>
         <NoteIconStyled type={type} />
         <TitleStyled title={title}>{title}</TitleStyled>

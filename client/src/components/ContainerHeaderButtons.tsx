@@ -8,6 +8,10 @@ import { getNoteItems, getNotes, getNotesSortingDirection } from '../store/selec
 import notesSlice from '../store/notes';
 import { SortingDirections } from '../enums';
 
+interface IProps {
+  notesSortingDirection: SortingDirections;
+}
+
 const ButtonContainerStyled = styled.div`
   margin: auto 6px;
   cursor: pointer;
@@ -20,30 +24,31 @@ const ButtonContainerStyled = styled.div`
   `}
 `;*/
 
-/*
-const SortingDirectionsIconStyled = styled(SortingDirectionIcon)`
-  ${props => props.notesSortingDirection === SortingDirections.ASC ? `transform: scaleY(-1)` : `transform: scaleY(1)`}
+
+// const SortingDirectionsIconStyled = styled(SortingDirectionIcon)`
+//   ${(props: IProps) => props.notessortingdirection === SortingDirections.ASC ? `transform: scaleY(-1)` : `transform: scaleY(1)`}
+// `;
+
+
+const SortingDirectionsIconContainerStyled = styled.div`
+   svg {
+    transform: ${(props: IProps) => props.notesSortingDirection === SortingDirections.ASC ? `scaleY(-1)` : `scaleY(1)`}
+  }
 `;
 
-interface IProps {
-  notesSortingDirection: SortingDirections;
-}
-*/
-
-// const ContainerHeaderButtons = ({ notesSortingDirection }: IProps) => {
-const ContainerHeaderButtons = () => {
+const ContainerHeaderButtons = ({ notesSortingDirection }: IProps) => {
   const dispatch = useDispatch();
   const notes = useSelector((state: StoreReducer) => getNoteItems(state));
-  // const notesSortingDirection = useSelector((state: StoreReducer) => getNotesSortingDirection);
 
   return (
     <div>
       <ButtonContainerStyled>
-        <SortingDirectionIcon
-          onClick={() => {
-            // @ts-ignore // TODO: TS complains here, but the code is changed (maybe something is cached in IDE itself, check it)
-            dispatch(notesSlice.actions.sort());
-          }} />
+        <SortingDirectionsIconContainerStyled notesSortingDirection={notesSortingDirection}>
+          <SortingDirectionIcon
+            onClick={() => {
+              dispatch(notesSlice.actions.sort());
+            }} />
+        </SortingDirectionsIconContainerStyled>
       </ButtonContainerStyled>
       <ButtonContainerStyled>
         <AddNoteIcon onClick={() => {

@@ -28,14 +28,14 @@ const TitleStyled = styled.div`
 `;
 
 const ContainerHeader = () => {
-  // const notesSortingDirection = useSelector((state: StoreReducer) => getNotesSortingDirection);
+  const notesSortingDirection = useSelector((state: StoreReducer) => getNotesSortingDirection(state));
 
   return (
     <ContainerStyled>
       <InnerContainerStyled>
         <TitleStyled>Notes</TitleStyled>
-        {/*<ContainerHeaderButtons notesSortingDirection={true} />*/}
-        <ContainerHeaderButtons/>
+        <ContainerHeaderButtons notesSortingDirection={notesSortingDirection} />
+        {/*<ContainerHeaderButtons />*/}
       </InnerContainerStyled>
     </ContainerStyled>
   );
