@@ -18,11 +18,21 @@ const ButtonContainerStyled = styled.div`
   display: inline-block;
 `;
 
-
-
 const SortingDirectionsIconContainerStyled = styled.div`
-   svg {
+  svg {
+    &:hover {
+      -webkit-box-shadow: 0px 0px 4px 1px rgb(154, 181, 179);
+      border-radius: 15px;
+    }
+
     transform: ${(props: IProps) => props.notesSortingDirection === SortingDirections.ASC ? `scaleY(-1)` : `scaleY(1)`}
+  }
+`;
+
+const AddNoteIconStyled = styled(AddNoteIcon)`
+  &:hover {
+    -webkit-box-shadow: 0px 0px 4px 1px rgb(154, 181, 179);
+    border-radius: 15px;
   }
 `;
 
@@ -41,7 +51,7 @@ const ContainerHeaderButtons = ({ notesSortingDirection }: IProps) => {
         </SortingDirectionsIconContainerStyled>
       </ButtonContainerStyled>
       <ButtonContainerStyled>
-        <AddNoteIcon onClick={() => {
+        <AddNoteIconStyled onClick={() => {
           dispatch(addNewNote(notes.length));
         }} />
       </ButtonContainerStyled>

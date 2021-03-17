@@ -4,7 +4,7 @@ import NoteIcon from './NoteIcon';
 import { formatDate } from '../utils/dateUtils';
 import Tags from './Tags';
 import { NoteTypes } from '../enums';
-import { ReactComponent as LockIconStyled } from '../icons/lock.svg';
+import { ReactComponent as LockIcon } from '../icons/lock.svg';
 import { useDispatch } from 'react-redux';
 import notesSlice from '../store/notes';
 
@@ -26,12 +26,16 @@ const NoteContainerStyled = styled.div`
     white-space: nowrap;
 
     margin-right: 12px;
-    margin-left: 16px;
+    margin-left: 36px;
     margin-bottom: 13px;
 
   }
 
   background: ${(p: IProps) => p.isSelected ? '#F4F5F7' : 'white'};
+`;
+
+const LockIconStyled = styled(LockIcon)`
+  right: 0;
 `;
 
 const HeaderStyled = styled.div`
@@ -42,15 +46,15 @@ const HeaderStyled = styled.div`
   justify-content: flex-start;
   margin-left: 11px;
   margin-top: 11px;
+
+  & svg {
+    position: absolute;
+  }
 `;
-
-
 
 const NoteIconStyled = styled(NoteIcon)`
   margin-right: 0;
   margin-left: 10px;
-
-  position: absolute;
 `;
 
 
@@ -58,7 +62,8 @@ const TitleStyled = styled.div`
   font-size: 14px;
   line-height: 18px;
   font-weight: 600;
-  margin-left: 10px;
+  margin-left: 25px;
+  margin-right: 12px;
 
   text-overflow: ellipsis;
   overflow-x: hidden;

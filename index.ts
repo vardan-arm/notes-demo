@@ -13,9 +13,6 @@ const app = express();
 app.get('/api/getInitialNotes', async (req, res) => {
   const notes = await readNotes();
 
-  // TODO: find better approach to not allow `*` for CORS
-  // res.setHeader('Access-Control-Allow-Origin', '*');
-
   if (notes !== null) {
     const notesArr = JSON.parse(notes);
 

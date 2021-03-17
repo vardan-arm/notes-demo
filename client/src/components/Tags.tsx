@@ -11,7 +11,7 @@ const TagStyled = styled.span`
   font-size: 10px;
   line-height: 14px;
   font-weight: 400;
-  margin: 0px 4px;
+  margin: 0px 8px 0px 0px;
 `;
 
 const Tags = ({ tags }: IProps) => {
