@@ -31,7 +31,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "build": "tsc './**/*.ts'",
+    "build": "tsc *.ts",
     "postinstall": "npm run build",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
