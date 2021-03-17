@@ -1,11 +1,11 @@
-import { INote } from '../store/types';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { INote } from '../store/types';
 import NoteIcon from './NoteIcon';
 import { formatDate } from '../utils/dateUtils';
 import Tags from './Tags';
 import { NoteTypes } from '../enums';
 import { ReactComponent as LockIcon } from '../icons/lock.svg';
-import { useDispatch } from 'react-redux';
 import notesSlice from '../store/notes';
 
 interface IProps {
@@ -31,7 +31,7 @@ const NoteContainerStyled = styled.div`
 
   }
 
-  background: ${(p: IProps) => p.isSelected ? '#F4F5F7' : 'white'};
+  background: ${(p: IProps) => (p.isSelected ? '#F4F5F7' : 'white')};
 `;
 
 const LockIconStyled = styled(LockIcon)`
@@ -56,7 +56,6 @@ const NoteIconStyled = styled(NoteIcon)`
   margin-right: 0;
   margin-left: 10px;
 `;
-
 
 const TitleStyled = styled.div`
   font-size: 14px;
@@ -99,7 +98,7 @@ const Note = ({ noteData, isSelected = false }: IProps) => {
   return (
     <NoteContainerStyled
       isSelected={isSelected}
-      onClick={(e) => {
+      onClick={e => {
         if (e.metaKey || e.ctrlKey) {
           dispatch(notesSlice.actions.updateSelection(id));
         }

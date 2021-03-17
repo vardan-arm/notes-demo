@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import styled from 'styled-components';
 import { getInitialNotes } from '../store/actions/getInitialNotes';
 import ContainerHeader from './ContainerHeader';
-import styled from 'styled-components';
 import ContainerBody from './ContainerBody';
 
 const ContainerStyled = styled.div`

@@ -9,15 +9,14 @@ const isDateToday = (timestamp: number) => {
   return (inputDate.setHours(0, 0, 0, 0) === todaysDate.setHours(0, 0, 0, 0));
 };
 
-
 export const formatDate = (timestamp: number) => {
   const dateObj = new Date(timestamp);
   const timeStr = dateObj.toLocaleTimeString('default', { hour: '2-digit', minute: '2-digit', hour12: false });
 
-  let dateStr = isDateToday(timestamp) ? 'Today' : dateObj.toLocaleDateString('default', {
+  const dateStr = isDateToday(timestamp) ? 'Today' : dateObj.toLocaleDateString('default', {
     month: 'short',
     year: 'numeric',
-    day: 'numeric'
+    day: 'numeric',
   });
 
   return `${dateStr}, ${timeStr}`;

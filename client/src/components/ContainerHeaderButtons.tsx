@@ -1,7 +1,7 @@
-import { ReactComponent as SortingDirectionIcon } from '../icons/sorting-direction.svg';
-import { ReactComponent as AddNoteIcon } from '../icons/add-note.svg';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
+import { ReactComponent as SortingDirectionIcon } from '../icons/sorting-direction.svg';
+import { ReactComponent as AddNoteIcon } from '../icons/add-note.svg';
 import { addNewNote } from '../store/actions/addNewNote';
 import { StoreReducer } from '../store';
 import { getNoteItems } from '../store/selectors/notes';
@@ -25,7 +25,7 @@ const SortingDirectionsIconContainerStyled = styled.div`
       border-radius: 15px;
     }
 
-    transform: ${(props: IProps) => props.notesSortingDirection === SortingDirections.ASC ? `scaleY(-1)` : `scaleY(1)`}
+    transform: ${(props: IProps) => (props.notesSortingDirection === SortingDirections.ASC ? 'scaleY(-1)' : 'scaleY(1)')}
   }
 `;
 
@@ -47,13 +47,16 @@ const ContainerHeaderButtons = ({ notesSortingDirection }: IProps) => {
           <SortingDirectionIcon
             onClick={() => {
               dispatch(notesSlice.actions.sort());
-            }} />
+            }}
+          />
         </SortingDirectionsIconContainerStyled>
       </ButtonContainerStyled>
       <ButtonContainerStyled>
-        <AddNoteIconStyled onClick={() => {
-          dispatch(addNewNote(notes.length));
-        }} />
+        <AddNoteIconStyled
+          onClick={() => {
+            dispatch(addNewNote(notes.length));
+          }}
+        />
       </ButtonContainerStyled>
     </div>
   );

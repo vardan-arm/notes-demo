@@ -1,5 +1,5 @@
-import { StoreReducer } from '../index';
 import { createSelector } from '@reduxjs/toolkit';
+import { StoreReducer } from '../index';
 
 export const getNotes = (state: StoreReducer) => state.notes;
 

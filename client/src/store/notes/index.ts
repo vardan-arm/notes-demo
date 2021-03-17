@@ -4,17 +4,17 @@ import { sortArray } from '../../utils/dataManipulation';
 import { INote } from '../types';
 
 interface IState {
-  items: INote[],
+  items: INote[];
   // selectedItems: string[],
-  selectedItemIds: string[],
-  sortingDirection: SortingDirections
+  selectedItemIds: string[];
+  sortingDirection: SortingDirections;
 }
 
 const initialState: IState = {
   items: [],
   // selectedItems: [],
   selectedItemIds: [],
-  sortingDirection: SortingDirections.DESC
+  sortingDirection: SortingDirections.DESC,
 };
 
 const notesSlice = createSlice({
@@ -23,44 +23,44 @@ const notesSlice = createSlice({
   reducers: {
     setNotes: (state, { payload }) => ({
       ...state,
-      items: payload
+      items: payload,
     }),
 
     addNote: (state, { payload }) => ({
       ...state,
       items: [
         ...state.items,
-        payload
+        payload,
       ],
     }),
-    sort: (state) => {
+    sort: state => {
       const sortingDirection = state.sortingDirection === SortingDirections.ASC ? SortingDirections.DESC : SortingDirections.ASC;
       const sortedItems: INote[] = sortArray([...state.items], sortingDirection);
 
       return {
         ...state,
         items: sortedItems,
-        sortingDirection
+        sortingDirection,
       };
     },
-    updateSelection: (state, {payload}) => {
+    updateSelection: (state, { payload }) => {
       const { selectedItemIds } = state;
       // const selectedItemIds = payload.shouldDeselect ? state.selectedItemIds.filter(itemId => itemId === payload.id)
       const updatedSelectedItemIds = selectedItemIds.includes(payload) ? selectedItemIds.filter(itemId => itemId !== payload)
-        : [...selectedItemIds, payload]
-      /*return {
+        : [...selectedItemIds, payload];
+      /* return {
         ...state,
         selectedItems: [
           ...state.selectedItemIds,
           payload
         ]
-      }*/
+      } */
       return {
         ...state,
-        selectedItemIds: updatedSelectedItemIds
+        selectedItemIds: updatedSelectedItemIds,
       };
-    }
-  }
+    },
+  },
 });
 
 export default notesSlice;

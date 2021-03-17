@@ -24,11 +24,12 @@ const Tags = ({ tags }: IProps) => {
 
   return (
     <div title={titleTags}>
-      {tagsArray.map(tag => {
-        return (
-          <TagStyled key={tag}># {tag}</TagStyled>
-        );
-      })}
+      {tagsArray.map(tag => (
+        <TagStyled key={tag}>
+          #
+          {tag}
+        </TagStyled>
+      ))}
     </div>
   );
 };

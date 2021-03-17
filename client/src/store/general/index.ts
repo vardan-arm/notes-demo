@@ -10,25 +10,23 @@ const generalSlice = createSlice({
   name: 'general',
   initialState,
   reducers: {
-    setIsLoading: (state, { payload }) => {
-      return {
-        ...state,
-        isLoading: payload
-      }
-    },
-    setIsSuccess: (state) => ({
+    setIsLoading: (state, { payload }) => ({
+      ...state,
+      isLoading: payload,
+    }),
+    setIsSuccess: state => ({
       ...state,
       isLoading: false,
       hasErrors: false,
-      errorMessage: "",
+      errorMessage: '',
     }),
-    setIsFailure: (state, {payload}) => ({
+    setIsFailure: (state, { payload }) => ({
       ...state,
       isLoading: false,
       hasErrors: true,
       errorMessage: payload,
-    })
-  }
+    }),
+  },
 });
 
 export default generalSlice;

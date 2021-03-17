@@ -16,17 +16,17 @@ const ReactTooltipStyled = styled(ReactTooltip)`
   padding: 8px 0px;
 `;
 
-const Tooltip = ({ id, selectionCount = 0, effect = 'solid' }: IProps) => {
+const Tooltip = ({ id, selectionCount = 0 }: IProps) => {
   const text = `${selectionCount} item${selectionCount > 1 ? 's' : ''} selected`;
 
   return (
     <ReactTooltipStyled
       id={id}
-      effect='solid'
-      place={'left'}
-      backgroundColor={'#ffffff'}
-      borderColor={'black'}
-      textColor={'#19191C'}
+      effect="solid"
+      place="left"
+      backgroundColor="#ffffff"
+      borderColor="black"
+      textColor="#19191C"
     >
       <span>{text}</span>
     </ReactTooltipStyled>

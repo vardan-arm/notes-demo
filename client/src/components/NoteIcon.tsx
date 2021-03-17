@@ -14,12 +14,12 @@ const typeIconMapping = {
   [NoteTypes.RICH]: RichTextIcon,
   [NoteTypes.CODE]: CodeIcon,
   [NoteTypes.SHEET]: SpreadsheetIcon,
-  [NoteTypes.TOKEN_VAULT]: TokenVaultIcon
+  [NoteTypes.TOKEN_VAULT]: TokenVaultIcon,
 };
 
-const NoteIcon = ({type}: IProps) => {
-  const DynamicIconComponent = typeIconMapping[type]
+const NoteIcon = ({ type }: IProps) => {
+  const DynamicIconComponent = typeIconMapping[type];
   return <DynamicIconComponent />;
-}
+};
 
 export default NoteIcon;

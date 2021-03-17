@@ -1,6 +1,6 @@
-import ContainerHeaderButtons from './ContainerHeaderButtons';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
+import ContainerHeaderButtons from './ContainerHeaderButtons';
 import { StoreReducer } from '../store';
 import { getNotesSortingDirection } from '../store/selectors/notes';
 
@@ -35,7 +35,7 @@ const ContainerHeader = () => {
       <InnerContainerStyled>
         <TitleStyled>Notes</TitleStyled>
         <ContainerHeaderButtons notesSortingDirection={notesSortingDirection} />
-        {/*<ContainerHeaderButtons />*/}
+        {/* <ContainerHeaderButtons /> */}
       </InnerContainerStyled>
     </ContainerStyled>
   );
